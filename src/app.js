@@ -5,7 +5,7 @@ const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
 const app = express()
-const port=process.env.port||3000
+const port = process.env.PORT ||3000
 // it will make an enviornmental variable . It will available on heroku. If it fail we will provide the default value of port 3000
 
 // Define paths for Express config
@@ -99,5 +99,5 @@ app.get('*', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Server is up on port'+port)
+    console.log('Server is up on port' +port)
 })
