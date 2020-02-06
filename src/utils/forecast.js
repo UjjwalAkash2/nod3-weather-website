@@ -12,7 +12,7 @@ const forecast = (latitude, longitude, callback) => {
             var f=body.currently.temperature;
             var c=(f-32)*5/9;
             var celsius=c.toFixed(2);
-            callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degrees fahrenheit or '+ celsius+ ' degrees celsius out. This high today is ' +body.daily.data[0].temperatureHigh + ' degrees fahrenheit with a low of '+ body.daily.data[0].temperatureLow +' degrees fahrenheit. There is a ' + body.currently.precipProbability + '% chance of rain.')
+            callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + '° fahrenheit or '+ celsius+ '° celsius out. This high today is ' +body.daily.data[0].temperatureHigh + '° fahrenheit with a low of '+ body.daily.data[0].temperatureLow +'° fahrenheit. There is a ' + body.currently.precipProbability + '% chance of rain.')
         }
     })
 }
