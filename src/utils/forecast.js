@@ -9,6 +9,7 @@ const forecast = (latitude, longitude, callback) => {
         } else if (body.error) {
             callback('Unable to find location', undefined)
         } else {
+            
             var f=body.currently.temperature;
             var c=(f-32)*5/9;
             var celsius=c.toFixed(2);
