@@ -43,7 +43,7 @@
                
                <label>Enter your msg here</label>
                 <div class="form-group">
-                    <textarea rows="4" cols="50" name="message" required></textarea>
+                    <textarea rows="4" cols="50" name="message" id="message" required></textarea>
                    
                 </div>
                 
@@ -62,9 +62,10 @@
         function submit_by_tag() {
            var email = document.getElementById("email").value;
            var mobile= document.getElementById("mobs").value;
+           var message=document.getElementById("message").value;
            var mobileReg=/^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
             var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if (email === '' || mobile==='') {
+            if (email === '' || mobile==='' || message==='') {
                 alert("Please fill all fields...!!!!!!");
                 } 
                 else if (!(email).match(emailReg) || !(mobile).match(mobileReg))
