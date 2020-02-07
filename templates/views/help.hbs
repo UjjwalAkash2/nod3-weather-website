@@ -3,6 +3,10 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <title>Help</title>
     <link rel="icon" href="/img/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
@@ -11,10 +15,77 @@
 <body>
     <div class="main-content">
         {{>header}}
-        <p>{{helpText}}</p>
+        {{!-- <p>{{helpText}}</p> --}}
+        <div class="contact"></div>
+        {{msg}}
+    <form method="POST" action="send"  id="form_id" onclick="submit_by_tag()" >
+        <div class="container">
+            <h2> Fill your details here :</h2>
+            <div class="form-group">
+
+                <label>Email:</label>
+                <div class="input-group mb-3">
+                    
+                    <input type="email" class="form-control" name ="email" id="email" required>
+                    <div class="input-group-append">
+                        <span class="input-group-text">@example.com</span>
+                    </div>
+                </div>
+                <label>Mobile No:</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                    </div>
+                    <input type="number" class="form-control"  id="mobs" name="mobile" maxlength="10" required pattern="^[1-9].*">
+
+                </div>
+
+               
+               <label>Enter your msg here</label>
+                <div class="form-group">
+                    <textarea rows="4" cols="50" name="message" required></textarea>
+                   
+                </div>
+                
+                <button type="submit" class="btn btn_default" >Submit</button>
+                 
+            </div>
+        </div>
+        </div>
+
+    </form>
+
     </div>
     
     {{>footer}}
+    <script>
+        function submit_by_tag() {
+           var email = document.getElementById("email").value;
+           var mobile= document.getElementById("mobs").value;
+           var mobileReg=/^[0][1-9]\d{9}$|^[1-9]\d{9}$/;
+            var emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (email === '' || mobile==='') {
+                alert("Please fill all fields...!!!!!!");
+                } 
+                else if (!(email).match(emailReg) || !(mobile).match(mobileReg))
+                {
+                    if(!(email).match(emailReg)) 
+                    alert("Invalid Email...!!!!!!");
+                    else
+                     alert("Invalid Mobile Number...!!!!!!");
+                }
+            else // Calling validation function
+            {
+            var x = document.getElementsByTagName("form");
+            x[0].submit(); //form submission
+            document.write("Form Submitted Successfully......");
+            }
+
+
+
+}
+
+    </script>
 </body>
 
 </html>
